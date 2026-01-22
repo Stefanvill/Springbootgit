@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Document</title>
+    <link href="../static/css/Layout.css" rel="stylesheet" th:href="@{/css/Layout.css}"/>
+
+</head>
+<body>
+<h1>Person Lista</h1>
+<ul>
+    <li th:each="person : ${personer}" th:text="${person}">person</li>
+</ul>
+</body>
+</html>

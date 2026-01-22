@@ -1,0 +1,139 @@
+/* Layout.css */
+
+/* Grund */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1f2933 0, #0b1015 45%, #050608 100%);
+    min-height: 100vh;
+    color: #e5e7eb;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+/* Container */
+body > h1 {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+    font-size: 2.4rem;
+    letter-spacing: 0.04em;
+    color: #f9fafb;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* List-wrapper */
+ul {
+    list-style: none;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.92);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(148, 163, 184, 0.14);
+    backdrop-filter: blur(18px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* Person-kort */
+ul li {
+    background: radial-gradient(circle at top left, #22d3ee 0, #0f172a 40%, #020617 100%);
+    border-radius: 16px;
+    padding: 1rem 1.1rem;
+    color: #e5e7eb;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.9),
+    0 0 0 1px rgba(15, 23, 42, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    background 0.18s ease-out,
+    translate 0.18s ease-out;
+}
+
+/* Accent “avatar” */
+ul li::before {
+    content: "";
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: conic-gradient(
+            from 180deg,
+            #22d3ee,
+            #3b82f6,
+            #a855f7,
+            #22d3ee
+    );
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9);
+}
+
+/* Text i kortet (personen) */
+ul li::after {
+    content: "👤";
+    font-size: 0.8rem;
+    color: rgba(15, 23, 42, 0.9);
+    position: absolute;
+    inset: 0.7rem auto auto 0.9rem;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+/* Själva namnet */
+ul li {
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+/* Hover-effekt */
+ul li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(56, 189, 248, 0.35);
+    background: radial-gradient(circle at top left, #38bdf8 0, #020617 55%, #020617 100%);
+}
+
+/* Liten focus-stil för keyboard */
+ul li:focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+/* Responsiv typografi */
+@media (max-width: 480px) {
+    body {
+        padding: 2.2rem 0.8rem;
+    }
+
+    body > h1 {
+        font-size: 1.9rem;
+    }
+
+    ul {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    ul li {
+        padding: 0.9rem 0.9rem;
+    }
+}
