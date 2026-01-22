@@ -23,8 +23,7 @@ public class ProductController {
 
     @GetMapping("/inventory")
     public String getProducts(Model model) {
-        List<Product> productList = productService.productList();
-        model.addAttribute("products", productList);
+        model.addAttribute("products", productService.productList());
         return "product";
     }
 
