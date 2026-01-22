@@ -1,9 +1,7 @@
-/* Layout.css */
+/* Minimalistic Layout.css */
 
-/* Grund */
-*,
-*::before,
-*::after {
+/* Reset */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -11,129 +9,87 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top, #1f2933 0, #0b1015 45%, #050608 100%);
-    min-height: 100vh;
+    background: #0f172a;
     color: #e5e7eb;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
+    min-height: 100vh;
 }
 
-/* Container */
-body > h1 {
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto 1.5rem auto;
+/* Header */
+h1 {
+    max-width: 800px;
+    margin: 0 auto 2rem;
     text-align: center;
-    font-size: 2.4rem;
-    letter-spacing: 0.04em;
+    font-size: 2.25rem;
+    font-weight: 600;
     color: #f9fafb;
-    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* List-wrapper */
+/* Grid container */
 ul {
     list-style: none;
-    width: 100%;
-    max-width: 720px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 1.25rem;
-    border-radius: 18px;
-    background: rgba(15, 23, 42, 0.92);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(148, 163, 184, 0.14);
-    backdrop-filter: blur(18px);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    padding: 0;
 }
 
-/* Person-kort */
-ul li {
-    background: radial-gradient(circle at top left, #22d3ee 0, #0f172a 40%, #020617 100%);
-    border-radius: 16px;
-    padding: 1rem 1.1rem;
-    color: #e5e7eb;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(15, 23, 42, 0.7);
-    display: flex;
+/* Product card */
+li {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1rem 1.5rem;
     align-items: center;
-    gap: 0.9rem;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    background 0.18s ease-out,
-    translate 0.18s ease-out;
-}
-
-/* Accent “avatar” */
-ul li::before {
-    content: "";
-    width: 38px;
-    height: 38px;
-    border-radius: 999px;
-    background: conic-gradient(
-            from 180deg,
-            #22d3ee,
-            #3b82f6,
-            #a855f7,
-            #22d3ee
-    );
-    flex-shrink: 0;
-    box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9);
-}
-
-/* Text i kortet (personen) */
-ul li::after {
-    content: "👤";
-    font-size: 0.8rem;
-    color: rgba(15, 23, 42, 0.9);
-    position: absolute;
-    inset: 0.7rem auto auto 0.9rem;
-    pointer-events: none;
-    opacity: 0.35;
-}
-
-/* Själva namnet */
-ul li {
-    font-weight: 500;
     font-size: 0.95rem;
-    letter-spacing: 0.02em;
+    font-weight: 500;
+    transition: all 0.15s ease;
 }
 
-/* Hover-effekt */
-ul li:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(56, 189, 248, 0.35);
-    background: radial-gradient(circle at top left, #38bdf8 0, #020617 55%, #020617 100%);
+li:hover {
+    border-color: #2563eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
 }
 
-/* Liten focus-stil för keyboard */
-ul li:focus-visible {
-    outline: 2px solid #38bdf8;
-    outline-offset: 3px;
+/* Product fields: id, title, price, stock */
+li span:nth-child(1) { /* id */
+    color: #9ca3af;
+    font-size: 0.9rem;
 }
 
-/* Responsiv typografi */
-@media (max-width: 480px) {
-    body {
-        padding: 2.2rem 0.8rem;
+li span:nth-child(2) { /* title */
+    color: #f9fafb;
+    font-weight: 600;
+    grid-column: 2;
+}
+
+li span:nth-child(3) { /* price */
+    color: #22c55e;
+    font-weight: 600;
+    justify-self: end;
+}
+
+li span:nth-child(4) { /* stock */
+    color: #38bdf8;
+    justify-self: end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    li {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        text-align: left;
     }
 
-    body > h1 {
-        font-size: 1.9rem;
-    }
-
-    ul {
-        padding: 1rem;
-        border-radius: 14px;
-    }
-
-    ul li {
-        padding: 0.9rem 0.9rem;
+    li span:nth-child(3),
+    li span:nth-child(4) {
+        justify-self: start;
     }
 }

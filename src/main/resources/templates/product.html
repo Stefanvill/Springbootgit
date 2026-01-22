@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Inventory</title>
+    <link href="../static/css/Layout.css" rel="stylesheet" th:href="@{/css/Layout.css}"/>
+</head>
+<body>
+<h1>Products</h1>
+<ul>
+    <li th:each="product : ${products}">
+        <span th:text="'id: ' + ${product.getId()}"></span>
+        <span th:text="'Title: ' + ${product.getTitle()}"></span>
+        <span th:text="'price: ' + ${product.getPrice()}"></span>
+        <span th:text="'Stock: ' + ${product.getStock()}"></span>
+    </li>
+</ul>
+</body>
+</html>
